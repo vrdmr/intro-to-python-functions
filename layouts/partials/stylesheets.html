@@ -1,0 +1,2 @@
+{{- $main := resources.Get "css/main.css" -}}
+<link href="{{ (slice $main | resources.Concat `css/bundle.css` | minify).Permalink }}" rel="stylesheet">

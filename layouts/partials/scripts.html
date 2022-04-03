@@ -1,0 +1,3 @@
+{{- $remarkjs := resources.Get "remark-0.14.0/remark.js" -}}
+{{- $main     := resources.Get "js/main.js" -}}
+<script src="{{ (slice $remarkjs $main | resources.Concat `js/bundle.js` | minify).Permalink }}"></script>

@@ -1,0 +1,242 @@
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.59.1"><title>Hugo Presentation</title><meta charset=utf-8><link href=https://yktoo.github.io/eonics-hugo/css/bundle.min.css rel=stylesheet></head><body><textarea id=source>
+class: center, middle
+
+# Static Site Generation
+
+# with
+
+![:scale 50%](img/hugo-logo.png)
+
+Dmitry Kann · https://yktoo.solutions
+
+---
+
+# Agenda
+
+0. Who am I
+1. Why would anyone want a static site?
+2. Hugo is your dream&#39;s tool
+3. Hugo features
+4. Hugo project structure
+5. Hugo page kinds
+6. Quick start
+
+---
+
+# Who am I
+
+* Name: Dmitry Kann
+* Profession: software developer
+* Origin: Russia
+
+&lt;br&gt;
+
+![:scale 100%](img/my-sites.png)
+
+All open-source: the code is available at [github.com/yktoo](https://github.com/yktoo)
+
+---
+
+# Introduction
+
+A **static website** leverages a one-off content generation process, which creates the entire website.
+
+This content can include:
+
+* HTML pages
+* Graphics
+* Stylesheets
+* Scripts
+* XML sitemaps
+* RSS feeds
+* … and more
+
+This generated set of pages can then be deployed to just about anywhere.
+
+---
+
+# Why?
+
+**Write once — deploy anywhere**
+
+&gt; CDN, GitHub pages, Netlify, Raspbery Pi, `python -m http.server`, or your mobile
+
+**It&#39;s efficient**
+
+&gt; A page is much more often viewed than it is updated
+
+**Super fast serving**
+
+&gt; Important for SEO
+
+**Secure**
+
+&gt; No chance for a break-in as there&#39;s nothing to break
+
+**Version-controlled**
+
+&gt; Everything in your Git (or not)
+
+---
+
+# Sounds nice, but…
+
+But wait… How about dynamic content?
+
+* News
+* Blog posts
+* Tags, sections
+* RSS feeds
+* Forms
+
+---
+
+# Here&#39;s the deal:
+
+In many cases, **no dynamic content is necessary**.
+
+For the content produced by you, every page, classification term, RSS entry etc. is known upfront.
+
+## And if it still is…
+
+* Client-side JS code
+* Forms: external services (formspree.io, Netlify)
+* Serverless implementation (AWS Lambda et al.)
+* Split into *static* and *dynamic* parts
+
+---
+
+# Meet Hugo
+
+Hugo comes into play!
+
+.center[![:scale 75%](img/hugo-logo.png)]
+
+.center[The fastest website generator ever: **1000…5000** pages/second]
+
+---
+
+# Hugo is…
+
+* Static website generator written in Go
+* Incredibly fast: **&lt; 1 ms** per page
+* Utilising Go Templates
+* Sophisticated: variables, loops, conditions, expressions, lists, maps etc.
+
+Example of a Hugo template:
+
+```hugo
+&lt;ul&gt;
+    {{ range .Data.Pages }}
+    &lt;li&gt;&lt;a href=&#34;{{ .Permalink }}&#34;&gt;{{ .Title }}&lt;/a&gt;&lt;/li&gt;
+    {{ end }}
+&lt;/ul&gt;
+```
+
+---
+
+# Hugo features
+
+* Open-source (GitHub: 38K ★, 590 contributors)
+* Cross-platform (Linux, Windows, Mac OS, *BSD)
+* Content in Markdown, Mmark, Org-mode or HTML
+* Auto-generated taxonomies (tags, sections etc.)
+* SASS/SCSS compilation (*extended version* needed)
+* Asset minification (HTML/JS/CSS)
+* External data sources (YAML, TOML, CSV etc.)
+* Image processing (reading EXIF, scaling, filtering etc.)
+* Shortcodes (example: `{{&lt; youtube &#34;abcdefghij&#34; &gt;}}` embeds a YouTube video)
+* Multilingual websites
+* Related content
+
+---
+
+# Hugo project structure
+
+* `archetypes`
+    - Content prototypes
+* `assets`
+    - Things that require some processing (e.g. SCSS)
+* `content`
+    - Site pages
+* `data`
+    - Data files
+* `i18n`
+    - Localisations
+* `layouts`
+    - Templates for presenting/formatting the content
+* `resources`
+    - Hugo&#39;s temporary folder
+* `static`
+    - Things served as is
+* `themes`
+    - Themes, which can contain defaults for assets, layouts etc.
+
+---
+
+# Hugo page kinds
+
+|Kind          |Description                                            |Example                                                                      |
+|--------------|-------------------------------------------------------|-----------------------------------------------------------------------------|
+|`home`        |The home page                                          |`/index.html`                                                                |
+|`page`        |A page showing a regular page                          |`my-post` page (`/posts/my-post/index.html`)                                 |
+|`section`     |A page listing regular pages from a given section      |`posts` section (`/posts/index.html`)                                        |
+|`taxonomy`    |A page listing regular pages from a given taxonomy term|page for the term `awesome` from `tags` taxonomy (`/tags/awesome/index.html`)|
+|`taxonomyTerm`|A page listing terms from a given taxonomy             |page for the `tags` taxonomy (`/tags/index.html`)                            |
+
+---
+
+# Quick start
+
+1. Create boilerplate directory structure:
+```bash
+hugo new site mysite
+```
+2. Download a theme:
+```bash
+cd mysite
+git clone ... themes/THEMENAME
+```
+3. Adjust settings in `config.toml` (or `config.yml`)
+
+---
+
+# What you can achieve with Hugo
+
+Have a look at **yktoo.com** (and source code at [github.com/yktoo/yktoo.com](https://github.com/yktoo/yktoo.com)):
+
+![Screenshot](img/yktoo-com-generation.png)
+
+Sections, lists, taxonomies, pagination, cross-links, shortcodes, internationalisation, sitemaps and so on.
+
+---
+
+class: center, middle
+
+# Let there be food!
+
+![Food!](img/food.gif)
+
+---
+
+class: center, middle
+
+# Workshop
+
+### Making a static website with
+
+![:scale 50%](img/hugo-logo.png)
+
+---
+
+# The workshop
+
+1. Go to https://github.com/yktoo/eonics-hugo
+2. Clone the repo
+3. Follow the steps from README.md
+
+## Good luck! :)
+
+(otherwise you can cheat by looking at `_solution`) 
+</textarea>
+<script src=https://yktoo.github.io/eonics-hugo/js/bundle.min.js></script></body></html>

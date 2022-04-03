@@ -1,0 +1,8 @@
+baseURL: "/"
+languageCode: "en-us"
+title: "Introduction to Azure Functions (Python)"
+publishDir: docs
+
+disableKinds:
+    - taxonomy
+    - taxonomyTerm
