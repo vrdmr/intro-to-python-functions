@@ -48,13 +48,58 @@ Shreya Batra | Program Manager @ Azure Functions - Python
 
 ---
 
-# Folder Structure
+# Sample Function App in Action
 
 
 ---
 
-# Programming Model
+# Folder Structure
 
+```
+<project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
+ | | - __init__.py
+ | | - function.json
+ | | - example.py
+ | - my_second_function/
+ | | - __init__.py
+ | | - function.json
+ | - shared_code/
+ | | - __init__.py
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
+ | - host.json
+ | - local.settings.json
+ | - requirements.txt
+ | - Dockerfile
+```
+
+---
+
+## Folder Structure continued
+
+File | Details
+---|---
+local.settings.json | Contains app settings and connection strings when running locally.
+requirements.txt | Includes Python packages for publishing to Azure.
+host.json | Contains function app level configuration details.
+.vscode/ | (Optional) Contains VSCode configuration.
+.venv/ | (Optional) Contains Python virtual environment for local development
+Dockerfile | (Optional) Used for phlising project in a customer container.
+tests/ | (Optional) Contains test cases for function app.
+.funcignore | (Optional) Declares files that should not be published to Azure.
+
+---
+
+# Programming Model
+main
+local variables
+environmental variales
 
 ---
 
@@ -82,7 +127,8 @@ Shreya Batra | Program Manager @ Azure Functions - Python
 ---
 
 # Sync vs. Async
-
+Sync - host instance for Python can process only one function invocation at a time
+Async - can improve the performance for a function app that processes many I/O events or is I/O bound
 
 ---
 
