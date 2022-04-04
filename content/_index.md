@@ -97,9 +97,34 @@ tests/ | (Optional) Contains test cases for function app.
 ---
 
 # Programming Model
-main
-local variables
-environmental variales
+- The method should be implemented as a global method called main() in the file _init_.py.
+- Triggers and bindings are indicated in the function.json file.
+- Attributes and return tpes can also be declared in the Function using Python type annotations.
+
+---
+
+## main
+
+---
+
+## function.json
+
+---
+
+## Alternate Entry Point
+
+Specify scriptFile and entryPoint in the function.json file to use an alternate entry point for the function.
+
+```json
+
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
 
 ---
 
