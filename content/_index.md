@@ -39,7 +39,92 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Who are we?
 
-Foo
+Varad Meru | Senior Software Engineering Manager @ Azure Functions - Python
+Shreya Batra | Program Manager @ Azure Functions - Python
+
+---
+
+# Basics
+
+---
+
+# Folder Structure
+
+
+---
+
+# Programming Model
+
+
+---
+
+# Architecture
+
+---
+
+# Infrastructure Overview
+
+
+---
+
+# Functions Host
+
+
+---
+
+# Python Worker & Interacting with Host (gRPC)
+
+
+---
+
+# Best Practices for Performance
+
+---
+
+# Sync vs. Async
+
+
+---
+
+# ThreadpoolExecutor for sync functions & PYTHON_THREADPOOL_THREAD_COUNT
+
+
+---
+
+# FUNCTIONS_WORKER_PROCESS_COUNT
+
+
+---
+
+# Current & Upcoming Features
+
+---
+
+# Debug Logging
+
+
+---
+
+# Python Functions Extensions
+
+
+---
+
+# Dependency Isolation
+
+
+---
+
+# WSGI and ASGI Integration
+
+
+---
+
+# Sneak Peak
+
+---
+
+# New Programming Model
 
 ---
 
