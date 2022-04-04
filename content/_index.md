@@ -28,12 +28,13 @@ Varad Meru · <varad.meru@microsoft.com>
   - `ThreadpoolExecutor` for `sync` functions
   - Performance app settings - `PYTHON_THREADPOOL_THREAD_COUNT` and `FUNCTIONS_WORKER_PROCESS_COUNT`
 - Other Dev Features (Current and upcoming)
+  - Durable Functions 
   - Python Functions Extensions
   - Debug logging
   - Dependency Isolation
   - WSGI and ASGI integration
   - Sneak peek
-     - PyStein: New Programming Model for Python Functions
+    - PyStein: New Programming Model for Python Functions
 
 ---
 
