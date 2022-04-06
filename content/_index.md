@@ -40,8 +40,12 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Who are we?
 
-Varad Meru | Senior Software Engineering Manager @ Azure Functions - Python
-Shreya Batra | Program Manager @ Azure Functions - Python
+- Varad Meru
+  - Senior SWE Engg. Manager @ Azure Functions - Python
+  - Working on Python Functions for past 2 years.
+- Shreya Batra
+  - Program Manager @ Azure Functions - Python.
+  - Working on Python Functions for past 6 months.
 
 ---
 
@@ -129,12 +133,42 @@ Specify scriptFile and entryPoint in the function.json file to use an alternate 
 
 ---
 
-# Architecture
+# Infrastructure Overview
+#### Infrastructure 
 
 ---
 
-# Infrastructure Overview
+# Worker Architecture
 
+Core building blocks of the worker:
+```
+              +-----------------+
+              |     WebHost     |
+              +-----------------+
+                       ^
+                       | gRPC messages
+                       |
+  ---------------------+-------------------------------
+   Python Worker       |
+                       v
+             +------------------+          +----------+
+       +-----|    Dispatcher    <----------> Bindings |
+       |     +------------------+          +----------+
+       |
+       |                                +-------+
+       |                           +----| func1 |
+       |                           |    +-------+
+  +----v---------------+           |
+  |                    |           |    +-------+
+  | Functions Registry <-----------+----| func2 |
+  |                    |           |    +-------+
+  +--------------------+           |
+                                   |       ...
+                                   |
+                                   |    +-------+
+                                   +----| funcN |
+                                        +-------+
+```
 
 ---
 
