@@ -55,6 +55,12 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Sample Function App in Action
 
+Scenario: A restaurant that needs to process food requests in the same order they recieved them, and store the data for later analysis.
+
+Workflow:
+- Food request is sent to the queue
+- The kitchen processes the food request from the queue
+- The order details are placed in a database
 
 ---
 
@@ -110,9 +116,16 @@ tests/ | (Optional) Contains test cases for function app.
 
 ## main
 
+The "main" method is located in the file _init_.py and defines the actions of the fucntion. 
+
 ---
 
 ## function.json
+
+The function.json file is where triggers and bindings are established.
+
+A trigger is what causes the function to run.
+A binding can be leveraged for input or output.
 
 ---
 
@@ -188,7 +201,10 @@ Core building blocks of the worker:
 
 # Sync vs. Async
 Sync - host instance for Python can process only one function invocation at a time
+
 Async - can improve the performance for a function app that processes many I/O events or is I/O bound
+
+[Improve Throughput Performance](https://docs.microsoft.com/en-us/azure/azure-functions/python-scale-performance-reference)
 
 ---
 
@@ -213,6 +229,9 @@ Async - can improve the performance for a function app that processes many I/O e
 
 # Python Functions Extensions
 
+Application-level Python worker [extensions](https://docs.microsoft.com/en-us/azure/azure-functions/develop-python-worker-extensions?tabs=windows%2Cpypi) enable customers to add pre and post invocation logic to their function apps.
+
+The [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure/blob/main/extensions/functions/README.rst) can be leveraged to collect custom request and custom dependecy telemetry outside of bindings.
 
 ---
 
@@ -223,6 +242,40 @@ Async - can improve the performance for a function app that processes many I/O e
 
 # WSGI and ASGI Integration
 
+You can leverage WSGI and ASGI-compatible frameworks such as Flask and FastAPI with your HTTP-triggered Python functions.
+
+This can be helpful if you are familiar with a particular framework, or if you have existing code you would like to reuse to create the Function app.
+
+To do this, 'function.json' should be updated to include 'route' in the HTTP trigger and 'host.json' should be updated to include an HTTP 'routePrefix'.
+
+Then, by updating the Python code file init.py, a ASGI handler approach or a WSGI wrapper approach can be used.
+
+[ASGI](https://docs.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/azure-functions-python-create-fastapi-app/)
+```python
+app=fastapi.FastAPI()
+
+@app.get("hello/{name}")
+async def get_name(
+  name: str,):
+  return {
+      "name": name,}
+
+def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
+    return AsgiMiddleware(app).handle(req, context)
+```
+
+[WSGI](https://docs.microsoft.com/en-us/samples/azure-samples/flask-app-on-azure-functions/azure-functions-python-create-flask-app/)
+```python
+app=Flask("Test")
+
+@app.route("hello/<name>", methods=['GET'])
+def hello(name: str):
+    return f"hello {name}"
+
+def main(req: func.HttpRequest, context) -> func.HttpResponse:
+  logging.info('Python HTTP trigger function processed a request.')
+  return func.WsgiMiddleware(app).handle(req, context)
+```
 
 ---
 
