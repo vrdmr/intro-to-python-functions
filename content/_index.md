@@ -1,5 +1,7 @@
 ---
-title: Hugo Presentation
+title: Introduction to Azure Functions (Python)
+date: 2022-04-07
+draft: false
 ---
 
 class: center, middle
@@ -149,6 +151,7 @@ Specify scriptFile and entryPoint in the function.json file to use an alternate 
 # Infrastructure Overview
 #### Infrastructure 
 
+![antares](img/image%205.png)
 ---
 
 # Worker Architecture
@@ -160,24 +163,20 @@ Core building blocks of the worker:
               +-----------------+
                        ^
                        | gRPC messages
-                       |
   ---------------------+-------------------------------
    Python Worker       |
                        v
              +------------------+          +----------+
        +-----|    Dispatcher    <----------> Bindings |
        |     +------------------+          +----------+
-       |
        |                                +-------+
        |                           +----| func1 |
        |                           |    +-------+
   +----v---------------+           |
-  |                    |           |    +-------+
-  | Functions Registry <-----------+----| func2 |
-  |                    |           |    +-------+
-  +--------------------+           |
+  |      Functions     |           |    +-------+
+  |      Registry      | <---------+----| func2 |
+  +--------------------+           |    +-------+
                                    |       ...
-                                   |
                                    |    +-------+
                                    +----| funcN |
                                         +-------+
@@ -185,13 +184,24 @@ Core building blocks of the worker:
 
 ---
 
-# Functions Host
+# Worker Architecture II
 
+Functions Loading
+
+![handle_function_load](img/image.png)
 
 ---
 
-# Python Worker & Interacting with Host (gRPC)
+# Worker Architecture III
 
+Functions Invocations
+
+![handle_function_invocations](img/image%202.png)
+
+---
+
+# Functions Host
+![inside_worker](img/image%203.png)
 
 ---
 
@@ -208,12 +218,10 @@ Async - can improve the performance for a function app that processes many I/O e
 
 ---
 
-# ThreadpoolExecutor for sync functions & PYTHON_THREADPOOL_THREAD_COUNT
+# Performance AppSetting
 
-
----
-
-# FUNCTIONS_WORKER_PROCESS_COUNT
+PYTHON_THREADPOOL_THREAD_COUNT: ThreadpoolExecutor for sync functions
+FUNCTIONS_WORKER_PROCESS_COUNT
 
 
 ---
