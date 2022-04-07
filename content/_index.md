@@ -55,7 +55,7 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Basics
 
-![:scale 15%](img/sky-clouds.gif)<img src="img/sky-clouds.gif" width="20">
+![:scale 90%](img/sky-clouds.gif)<img src="img/sky-clouds.gif" width="90">
 
 
 ---
