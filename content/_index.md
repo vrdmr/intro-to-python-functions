@@ -45,6 +45,8 @@ Varad Meru · <varad.meru@microsoft.com>
 - Varad Meru
   - Senior SWE Engg. Manager @ Azure Functions - Python
   - Working on Python Functions for past 2 years.
+
+
 - Shreya Batra
   - Program Manager @ Azure Functions - Python.
   - Working on Python Functions for past 6 months.
@@ -129,36 +131,15 @@ The function.json file is where triggers and bindings are established.
 A trigger is what causes the function to run.
 A binding can be leveraged for input or output.
 
+Here is an example of a queue output binding represented in function.json:
+
 ```json
 {
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "obj",
-      "direction": "in",
-      "type": "blob",
-      "path": "samples/{id}",
-      "connection": "AzureWebJobsStorage"
-    },
-    {
-      "name": "msg",
-      "direction": "out",
       "type": "queue",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    },
-    {
-      "name": "$return",
       "direction": "out",
-      "type": "http"
-    }
-  ]
+      "name": "msg",
+      "queueName": "kitchen-queue",
+      "connection": "AzureQueueConnectionString"
 }
 ```
 
@@ -188,6 +169,13 @@ Workflow:
 - Food request is sent to the queue
 - The kitchen processes the food request from the queue
 - The order details are placed in a database
+
+Function #1: CustomerToKitchen
+HTTP request (CustomerOrder) -> Queue (kitchen-queue)
+
+Function #2: RecordOrderData
+Queue (kitchen-queue) -> CosmosDB (OrderHistory)
+
 
 ---
 
@@ -301,7 +289,11 @@ To do this, 'function.json' should be updated to include 'route' in the HTTP tri
 
 Then, by updating the Python code file init.py, a ASGI handler approach or a WSGI wrapper approach can be used.
 
-[ASGI](https://docs.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/azure-functions-python-create-fastapi-app/)
+---
+
+# ASGI
+
+[ASGI Sample](https://docs.microsoft.com/en-us/samples/azure-samples/fastapi-on-azure-functions/azure-functions-python-create-fastapi-app/)
 ```python
 app=fastapi.FastAPI()
 
@@ -315,7 +307,11 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
     return AsgiMiddleware(app).handle(req, context)
 ```
 
-[WSGI](https://docs.microsoft.com/en-us/samples/azure-samples/flask-app-on-azure-functions/azure-functions-python-create-flask-app/)
+---
+
+# WSGI
+
+[WSGI Sample](https://docs.microsoft.com/en-us/samples/azure-samples/flask-app-on-azure-functions/azure-functions-python-create-flask-app/)
 ```python
 app=Flask("Test")
 
