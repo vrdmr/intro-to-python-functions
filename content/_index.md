@@ -55,17 +55,6 @@ Varad Meru · <varad.meru@microsoft.com>
 
 ---
 
-# Sample Function App in Action
-
-Scenario: A restaurant that needs to process food requests in the same order they recieved them, and store the data for later analysis.
-
-Workflow:
-- Food request is sent to the queue
-- The kitchen processes the food request from the queue
-- The order details are placed in a database
-
----
-
 # Folder Structure
 
 ```
@@ -94,7 +83,7 @@ Workflow:
 
 ---
 
-## Folder Structure continued
+## Folder Structure II
 
 File | Details
 ---|---
@@ -120,6 +109,17 @@ tests/ | (Optional) Contains test cases for function app.
 
 The "main" method is located in the file _init_.py and defines the actions of the fucntion. 
 
+```python
+import azure.functions as func
+
+def main(req: func.HttpRequest,
+         obj: func.InputStream,
+         msg: func.Out[func.QueueMessage]) -> func.HttpResponse:
+    message = obj.read()
+    msg.set(message)
+    return func.HttpResponse("NoOp", status_code=200)
+```
+
 ---
 
 ## function.json
@@ -128,6 +128,39 @@ The function.json file is where triggers and bindings are established.
 
 A trigger is what causes the function to run.
 A binding can be leveraged for input or output.
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "req",
+      "direction": "in",
+      "type": "httpTrigger",
+      "authLevel": "anonymous"
+    },
+    {
+      "name": "obj",
+      "direction": "in",
+      "type": "blob",
+      "path": "samples/{id}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "msg",
+      "direction": "out",
+      "type": "queue",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "$return",
+      "direction": "out",
+      "type": "http"
+    }
+  ]
+}
+```
 
 ---
 
@@ -145,6 +178,16 @@ Specify scriptFile and entryPoint in the function.json file to use an alternate 
   ]
 }
 ```
+
+---
+# Sample Function App in Action
+
+Scenario: A restaurant that needs to process food requests in the same order they recieved them, and store the data for later analysis.
+
+Workflow:
+- Food request is sent to the queue
+- The kitchen processes the food request from the queue
+- The order details are placed in a database
 
 ---
 
