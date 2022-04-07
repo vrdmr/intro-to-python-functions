@@ -114,12 +114,11 @@ The "main" method is located in the file _init_.py and defines the actions of th
 ```python
 import azure.functions as func
 
-def main(req: func.HttpRequest,
-         obj: func.InputStream,
-         msg: func.Out[func.QueueMessage]) -> func.HttpResponse:
-    message = obj.read()
-    msg.set(message)
-    return func.HttpResponse("NoOp", status_code=200)
+def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+    input_msg = req.params.get('message')
+    msg.set(input_msg)
+    logging.info("Food order has been successfully processed and placed in the queue.")
+    return 'Order has been successfully processed and placed in the queue.'
 ```
 
 ---
@@ -326,11 +325,19 @@ def main(req: func.HttpRequest, context) -> func.HttpResponse:
 
 ---
 
-# Sneak Peak
+# Sneak Peak: New Programming Model
 
 ---
 
-# New Programming Model
+# Motivation
+
+---
+
+# Key Differences
+
+---
+
+# Sample Function
 
 ---
 
