@@ -55,7 +55,7 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Basics
 
-![:scale 90%][clouds-sky](img/sky-clouds.gif)
+![clouds-sky](img/sky-clouds.gif)
 
 
 ---
@@ -240,6 +240,8 @@ Functions Invocations
 
 # Best Practices for Performance
 
+![wheels-moving-together](img/moving-gears-animation.gif)
+
 ---
 
 # Sync vs. Async
@@ -260,6 +262,8 @@ FUNCTIONS_WORKER_PROCESS_COUNT
 ---
 
 # Current & Upcoming Features
+
+![building](img/buildinginprogress.gif)
 
 ---
 
