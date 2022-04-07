@@ -55,7 +55,7 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Basics
 
-![clouds-sky](img/sky-clouds.gif)
+![:scale 90%][clouds-sky](img/sky-clouds.gif)
 
 
 ---
