@@ -352,7 +352,15 @@ We decided we want to meet developers where they are at and improve the Function
 
 ---
 
-# Sample Function Before and After
+# Sample Function Before and After: HTTP
+
+![HTTP](img/http-trigger.png)
+
+---
+
+# Sample Function Before and After: Queue
+
+![Queue](img/queue.png)
 
 ---
 
