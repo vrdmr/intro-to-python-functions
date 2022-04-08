@@ -310,9 +310,12 @@ The [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensu
 
 You can leverage WSGI and ASGI-compatible frameworks such as Flask and FastAPI with your HTTP-triggered Python functions.
 <br/>
+<br/>
 This can be helpful if you are familiar with a particular framework, or if you have existing code you would like to reuse to create the Function app.
 <br/>
+<br/>
 To do this, 'function.json' should be updated to include 'route' in the HTTP trigger and 'host.json' should be updated to include an HTTP 'routePrefix'.
+<br/>
 <br/>
 Then, by updating the Python code file init.py, a ASGI handler approach or a WSGI wrapper approach can be used.
 
@@ -356,7 +359,7 @@ def main(req: func.HttpRequest, context) -> func.HttpResponse:
 
 # Sneak Peak: New Programming Model
 
-![:scale 100%](img/stein.jpeg)
+![:scale 100%](img/stein.jpg)
 
 ---
 
