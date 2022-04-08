@@ -338,13 +338,21 @@ def main(req: func.HttpRequest, context) -> func.HttpResponse:
 
 # Motivation
 
+Customers told us that current programming model is at times not idiomatic for Python developers.
+
+We decided we want to meet developers where they are at and improve the Function creation experience.
+
 ---
 
 # Key Differences
 
+1. Functions will be in a single .py file - `function_app.py`
+2. Triggers and bindings will be decoraters, similar to well-known Python libraries (Flask, FastAPI, et. al.)
+3. No `function.json` file
+
 ---
 
-# Sample Function
+# Sample Function Before and After
 
 ---
 
