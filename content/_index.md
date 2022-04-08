@@ -59,7 +59,7 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Basics
 
-![clouds-sky](img/sky-clouds.gif)
+![:scale 100%](img/abc.png)
 
 ---
 
@@ -356,11 +356,16 @@ def main(req: func.HttpRequest, context) -> func.HttpResponse:
 
 # Sneak Peak: New Programming Model
 
+![:scale 100%](img/stein.jpeg)
+
 ---
 
 # Motivation
 
 Customers told us that current programming model is at times not idiomatic for Python developers.
+
+- “So I’m confused about where exactly am I to put my code….” – When trying to figure out where is the entry point"
+- "I wasn’t sure what exactly I’m running….I’m slightly confused about the project, the trigger and the code I was given to run” – After pressing F5 and seeing logs printed out on the terminal"
 
 We decided we want to meet developers where they are at and improve the Function creation experience.
 
