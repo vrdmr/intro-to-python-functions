@@ -257,19 +257,54 @@ Functions Invocations
 
 # Sync vs. Async
 
-- Sync - host instance for Python can process only one function invocation at a time
+More information at [Improve Throughput Performance](https://docs.microsoft.com/azure/azure-functions/python-scale-performance-reference)
 
-- Async - can improve the performance for a function app that processes many I/O events or is I/O bound
+- `sync` methods - host instance for Python can process only one function invocation at a time.
 
-[Improve Throughput Performance](https://docs.microsoft.com/azure/azure-functions/python-scale-performance-reference)
+```python
+# Runs in an ThreadPoolExecutor threadpool. Number of threads is defined by PYTHON_THREADPOOL_THREAD_COUNT. 
+# The example is intended to show how default synchronous function are handled.
+
+def main():
+    some_blocking_socket_io()
+```
+
+- `async` methods - can improve the performance for a function app that processes many I/O events or is I/O bound
+
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
 
 ---
 
-# Performance AppSetting
+## Performance AppSettings
 
-`PYTHON_THREADPOOL_THREAD_COUNT`: ThreadpoolExecutor for sync functions
+More information at [Improve Throughput Performance](https://docs.microsoft.com/azure/azure-functions/python-scale-performance-reference)
+
+`PYTHON_THREADPOOL_THREAD_COUNT`: ThreadPoolExecutor for `sync` functions
+<br/>
+
+![:scale 90%](img/image%202.png)
+
+---
+
+## Performance AppSettings II
 
 `FUNCTIONS_WORKER_PROCESS_COUNT`:
+
+<br/>
+
+![:scale 80%](img/image%203.png)
 
 ---
 
@@ -291,20 +326,21 @@ Functions Invocations
 
 ---
 
-# Python Functions Extensions
-
-Application-level Python worker [extensions](https://docs.microsoft.com/en-us/azure/azure-functions/develop-python-worker-extensions?tabs=windows%2Cpypi) enable customers to add pre and post invocation logic to their function apps.
-
-The [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure/blob/main/extensions/functions/README.rst) can be leveraged to collect custom request and custom dependecy telemetry outside of bindings.
-
----
-
 # Dependency Isolation
 
 #### In Preview
 
 - **Prevent customer and worker library collision** - Configuring `PYTHON_ISOLATE_WORKER_DEPENDENCIES` to 1 in app settings
 - Used to prevent your application from referring worker's dependencies, and vice-versa.
+- Example libraries: protobuf
+
+---
+
+# Python Functions Extensions
+
+Application-level Python worker [extensions](https://docs.microsoft.com/en-us/azure/azure-functions/develop-python-worker-extensions?tabs=windows%2Cpypi) enable customers to add pre and post invocation logic to their function apps.
+
+The [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensus-python-extensions-azure/blob/main/extensions/functions/README.rst) can be leveraged to collect custom request and custom dependecy telemetry outside of bindings.
 
 ---
 
