@@ -184,7 +184,7 @@ Queue (kitchen-queue) -> CosmosDB (OrderHistory)
 # Infrastructure Overview
 #### Infrastructure 
 
-![antares](img/image%205.png)
+![:scale 15%](img/image%205.png)
 ---
 
 # Worker Architecture
@@ -221,7 +221,7 @@ Core building blocks of the worker:
 
 Functions Loading
 
-![handle_function_load](img/image.png)
+![:scale 15%](img/image.png)
 
 ---
 
@@ -229,12 +229,12 @@ Functions Loading
 
 Functions Invocations
 
-![handle_function_invocations](img/image%202.png)
+![:scale 15%](img/image%202.png)
 
 ---
 
 # Functions Host
-![inside_worker](img/image%203.png)
+![:scale 15%](img/image%203.png)
 
 ---
 
@@ -352,15 +352,17 @@ We decided we want to meet developers where they are at and improve the Function
 
 ---
 
-# Sample Function Before and After: HTTP
+# Sample Function 
+Before and After: HTTP
 
-![HTTP](img/http-trigger.png)
+![:scale 15%](img/http-trigger.png)
 
 ---
 
-# Sample Function Before and After: Queue
+# Sample Function 
+Before and After: Queue
 
-![Queue](img/queue.png)
+![:scale 15%](img/queue.png)
 
 ---
 
