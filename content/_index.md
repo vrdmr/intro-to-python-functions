@@ -42,11 +42,15 @@ Varad Meru · <varad.meru@microsoft.com>
 
 # Who are we?
 
+<br/>
+<br/>
 - Varad Meru
   - Senior SWE Engg. Manager @ Azure Functions - Python
   - Working on Python Functions for past 2 years.
 
 
+<br/>
+<br/>
 - Shreya Batra
   - Program Manager @ Azure Functions - Python.
   - Working on Python Functions for past 6 months.
@@ -56,7 +60,6 @@ Varad Meru · <varad.meru@microsoft.com>
 # Basics
 
 ![clouds-sky](img/sky-clouds.gif)
-
 
 ---
 
@@ -104,13 +107,14 @@ tests/ | (Optional) Contains test cases for function app.
 ---
 
 # Programming Model
+
 - The method should be implemented as a global method called main() in the file _init_.py.
 - Triggers and bindings are indicated in the function.json file.
 - Attributes and return tpes can also be declared in the Function using Python type annotations.
 
 ---
 
-## main
+## `main` function
 
 The "main" method is located in the file _init_.py and defines the actions of the fucntion. 
 
@@ -163,11 +167,13 @@ Specify scriptFile and entryPoint in the function.json file to use an alternate 
 ```
 
 ---
+
 # Sample Function App in Action
 
 Scenario: A restaurant that needs to process food requests in the same order they recieved them, and store the data for later analysis.
 
 Workflow:
+
 - Food request is sent to the queue
 - The kitchen processes the food request from the queue
 - The order details are placed in a database
@@ -178,18 +184,26 @@ HTTP request (CustomerOrder) -> Queue (kitchen-queue)
 Function #2: RecordOrderData
 Queue (kitchen-queue) -> CosmosDB (OrderHistory)
 
-
 ---
 
 # Infrastructure Overview
+
 #### Infrastructure 
 
-![:scale 15%](img/image%205.png)
+![:scale 80%](img/image%205.png)
+
+---
+
+# Functions Overview
+
+![:scale 100%](img/image%203.png)
+
 ---
 
 # Worker Architecture
 
 Core building blocks of the worker:
+
 ```
               +-----------------+
               |     WebHost     |
@@ -221,7 +235,7 @@ Core building blocks of the worker:
 
 Functions Loading
 
-![:scale 15%](img/image.png)
+![:scale 100%](img/image.png)
 
 ---
 
@@ -229,12 +243,7 @@ Functions Loading
 
 Functions Invocations
 
-![:scale 15%](img/image%202.png)
-
----
-
-# Functions Host
-![:scale 15%](img/image%203.png)
+![:scale 90%](img/image%202.png)
 
 ---
 
@@ -245,30 +254,38 @@ Functions Invocations
 ---
 
 # Sync vs. Async
-Sync - host instance for Python can process only one function invocation at a time
 
-Async - can improve the performance for a function app that processes many I/O events or is I/O bound
+- Sync - host instance for Python can process only one function invocation at a time
 
-[Improve Throughput Performance](https://docs.microsoft.com/en-us/azure/azure-functions/python-scale-performance-reference)
+- Async - can improve the performance for a function app that processes many I/O events or is I/O bound
+
+[Improve Throughput Performance](https://docs.microsoft.com/azure/azure-functions/python-scale-performance-reference)
 
 ---
 
 # Performance AppSetting
 
-PYTHON_THREADPOOL_THREAD_COUNT: ThreadpoolExecutor for sync functions
-FUNCTIONS_WORKER_PROCESS_COUNT
+`PYTHON_THREADPOOL_THREAD_COUNT`: ThreadpoolExecutor for sync functions
 
+`FUNCTIONS_WORKER_PROCESS_COUNT`:
 
 ---
 
 # Current & Upcoming Features
 
-![building](img/buildinginprogress.gif)
+<!-- ![:scale 70%, :align center](img/buildinginprogress.gif) -->
+<p align="center">
+<img width="500" height="500" src="img/buildinginprogress.gif">
+</p>
 
 ---
 
 # Debug Logging
 
+#### In Preview
+
+- **Allow debug logging through app setting** - Configuring `PYTHON_ENABLE_DEBUG_LOGGING` to 1 in app settings
+- Used to enable/disable debug logging with easy and no-redeployment of your application.
 
 ---
 
@@ -282,6 +299,10 @@ The [OpenCensus Python Extensions](https://github.com/census-ecosystem/opencensu
 
 # Dependency Isolation
 
+#### In Preview
+
+- **Prevent customer and worker library collision** - Configuring `PYTHON_ISOLATE_WORKER_DEPENDENCIES` to 1 in app settings
+- Used to prevent your application from referring worker's dependencies, and vice-versa.
 
 ---
 
@@ -317,7 +338,8 @@ def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
 
 # WSGI
 
-[WSGI Sample](https://docs.microsoft.com/en-us/samples/azure-samples/flask-app-on-azure-functions/azure-functions-python-create-flask-app/)
+Complete working sample: [WSGI Sample](https://docs.microsoft.com/en-us/samples/azure-samples/flask-app-on-azure-functions/azure-functions-python-create-flask-app/)
+
 ```python
 app=Flask("Test")
 
@@ -347,22 +369,30 @@ We decided we want to meet developers where they are at and improve the Function
 # Key Differences
 
 1. Functions will be in a single .py file - `function_app.py`
-2. Triggers and bindings will be decoraters, similar to well-known Python libraries (Flask, FastAPI, et. al.)
+2. Triggers and bindings will be Python decoraters, similar to well-known Python libraries (Flask, FastAPI, et. al.)
 3. No `function.json` file
 
 ---
 
-# Sample Function 
-Before and After: HTTP
+# Sample Function
 
-![:scale 15%](img/http-trigger.png)
+**Before and After: HTTP**
+
+![:scale 100%](img/http-trigger.png)
 
 ---
 
 # Sample Function 
-Before and After: Queue
 
-![:scale 15%](img/queue.png)
+**Before and After: Queue**
+
+![:scale 100%](img/queue.png)
+
+---
+
+class: center, middle
+
+# Questions?
 
 ---
 
