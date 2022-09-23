@@ -13,7 +13,8 @@ class: center, middle
 ![:scale 15%](img/FunctionApps.png)<img src="img/Heart.png" width="20"> ![:scale 15%](img/logo_python.png)
 
 Shreya Batra · <shreya.batra@microsoft.com> <br>
-Varad Meru · <varad.meru@microsoft.com>
+Varad Meru · <varad.meru@microsoft.com> <br>
+Azure Functions team
 
 ---
 
