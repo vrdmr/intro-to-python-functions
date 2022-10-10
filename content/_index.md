@@ -37,7 +37,7 @@ Azure Functions team
   - Dependency Isolation
   - WSGI and ASGI integration
   - Sneak peek
-    - PyStein: New Programming Model for Python Functions
+    - PyStein: New Programming Model for Python Functions.
 
 ---
 
